@@ -1,0 +1,1126 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Table</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <style>
+       .wrapper {
+           background-color: #1c1c1c;
+           border: solid white 1px;
+           display: grid;
+           grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+           grid-template-rows: auto;
+           grid-template-areas: 'header header header header header' 'content content content content content' 'content content content content content' 'footer footer footer footer footer';
+       }
+
+    body {
+    background-color: black;
+    cursor: pointer;
+    }
+
+    .header {
+    grid-area: header;
+    border: solid white 1px;
+    background-color: #3a3a3a;
+    margin: 10px;
+    border-radius: 2px;
+    box-shadow: 0px 0px 2px white;
+    cursor: pointer;
+    }
+
+    .content {
+    grid-area: content;
+    border: solid white 1px;
+    background-color: #3a3a3a;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 5px;
+    grid-auto-rows: min-content;
+    overflow-y: scroll;
+    border-radius: 2px;
+    box-shadow: 0px 0px 2px white;
+    cursor: pointer;
+    }
+
+    .footer {
+    grid-area: footer;
+    margin: 10px;
+    border: solid white 1px;
+    background-color: #3a3a3a;
+    border-radius: 2px;
+    box-shadow: 0px 0px 2px white;
+    cursor: pointer;
+    }
+
+    .dev {
+    text-align: center;
+    color: white;
+    font-family: Arial;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+    }
+
+    .content {
+    list-style: none;
+    grid-area: content;
+    margin: 10px;
+    padding: 10px;
+    background-color: #3a3a3a;
+    grid-row-gap: 5px;
+    grid-column-gap: 5px;
+    cursor: pointer;
+    max-height: 500px;
+    }
+
+    .cell {
+    border: solid white 1px;
+    color: white;
+    font-family: Arial;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+    background-color: #1e1e1e;
+    border-radius: 2px;
+    box-shadow: 0px 0px 2px white;
+    cursor: pointer;
+    }
+
+    .cell-top {
+    border: solid red 1px;
+    color: red;
+    font-family: Arial;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+    background-color: #1e1e1e;
+    border-radius: 2px;
+    box-shadow: 0px 0px 2px red;
+    cursor: pointer;
+    }
+
+    .cell-dato {
+    border: solid deeppink 1px;
+    color: deeppink;
+    font-family: Arial;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+    background-color: #1e1e1e;
+    border-radius: 2px;
+    box-shadow: 0px 0px 2px deeppink;
+    cursor: pointer;
+    }
+
+    .logo {
+    width: 300px;
+    height: 51px;
+    text-align: center;
+    line-height: 40px;
+    margin: 5px;
+    float: left;
+    cursor: pointer;
+    }
+
+    .button-comments {
+    border: solid green 1px;
+    color: green;
+    font-size: 12px;
+    text-align: center;
+    background-color: #1e1e1e;
+    font-family: Arial;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 30px;
+    width: 15%;
+    !important;
+    border-radius: 2px;
+    box-shadow: 0px 0px 2px green;
+    cursor: pointer;
+    }
+
+    .button-rating {
+    border: solid yellow 1px;
+    color: white;
+    font-size: 12px;
+    text-align: center;
+    background-color: #1e1e1e;
+    font-family: Arial;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 30px;
+    width: 66%;
+    !important;
+    border-radius: 2px;
+    box-shadow: 0px 0px 2px yellow;
+    cursor: pointer;
+    }
+
+    .button-edit-top {
+    border: solid orange 1px;
+    color: orange;
+    font-size: 12px;
+    text-align: center;
+    background-color: #1e1e1e;
+    font-family: Arial;
+    text-transform: uppercase;
+    line-height: 30px;
+    width: 100%;
+    !important;
+    border-radius: 2px;
+    box-shadow: 0px 0px 2px orange;
+    cursor: pointer;
+    }
+
+    .fa-heart {
+    color: red;
+    }
+
+    /* width */
+    ::-webkit-scrollbar {
+    width: 20px;
+    border-radius: 2px;
+    border-left: solid white 1px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px white;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+    background: white;
+    box-shadow: 0px 0px 2px white;
+    }
+
+    .user {
+    float: right;
+    border: solid white 1px;
+    color: white;
+    font-family: Arial;
+    font-size: 20px;
+    text-transform: uppercase;
+    text-align: center;
+    height: 51px;
+    background-color: #1e1e1e;
+    border-radius: 2px;
+    box-shadow: 0px 0px 2px white;
+    cursor: pointer;
+    line-height: 40px;
+    margin: 5px;
+    width: 40px;
+    }
+
+       .user:hover {
+           float: right;
+           border: solid red 1px;
+           color: red;
+           font-family: Arial;
+           font-size: 20px;
+           text-transform: uppercase;
+           text-align: center;
+           height: 51px;
+           background-color: #1e1e1e;
+           border-radius: 2px;
+           box-shadow: 0px 0px 2px red;
+           cursor: pointer;
+           line-height: 40px;
+           margin: 5px;
+           width: 40px;
+       }
+
+    .star:hover {
+    color: yellow;
+    }
+
+       .txthere {
+           border: solid white 1px;
+           margin: 10px;
+           padding: 10px;
+           color: white;
+           border-radius: 2px;
+           box-shadow: 0px 0px 2px white;
+           text-align: left;
+           text-transform: uppercase;
+           grid-column-start: 1;
+           grid-column-end: 7;
+           font-family: Arial;
+           background-color: #1e1e1e;
+       }
+
+       .txthere:empty {
+           border: solid white 1px;
+           margin: 10px;
+           padding: 10px;
+           color: white;
+           border-radius: 2px;
+           box-shadow: 0px 0px 2px white;
+           text-align: left;
+           text-transform: uppercase;
+           grid-column-start: 1;
+           grid-column-end: 7;
+           font-family: Arial;
+           background-color: #1e1e1e;
+           display: none;
+       }
+
+       .username {
+           color: red;
+           font-weight: bold;
+       }
+
+       .InputName {
+           border: solid white 1px;
+           margin: 10px;
+           padding: 10px;
+           color: white;
+           border-radius: 2px;
+           box-shadow: 0px 0px 2px white;
+           text-align: left;
+           text-transform: uppercase;
+           grid-column-start: 1;
+           grid-column-end: 3;
+           font-family: Arial;
+           background-color: #1e1e1e;
+       }
+
+       .InputMessage {
+           border: solid white 1px;
+           margin: 10px;
+           padding: 10px;
+           color: white;
+           border-radius: 2px;
+           box-shadow: 0px 0px 2px white;
+           text-align: left;
+           text-transform: uppercase;
+           grid-column-start: 3;
+           grid-column-end: 5;
+           font-family: Arial;
+           background-color: #1e1e1e;
+       }
+
+       .InputSend {
+           border: solid white 1px;
+           margin: 10px;
+           padding: 10px;
+           color: white;
+           border-radius: 2px;
+           box-shadow: 0px 0px 2px white;
+           text-align: left;
+           text-transform: uppercase;
+           grid-column-start: 5;
+           grid-column-end: 7;
+           font-family: Arial;
+           background-color: #1e1e1e;
+       }
+
+       .back {
+           border: solid white 1px;
+           margin: 10px;
+           padding: 10px;
+           color: white;
+           border-radius: 2px;
+           box-shadow: 0px 0px 2px white;
+           text-align: center;
+           text-transform: uppercase;
+           grid-column-start: 1;
+           grid-column-end: 7;
+           font-family: Arial;
+           background-color: #1e1e1e;
+       }
+
+       .edit-top {
+           border: solid white 1px;
+           margin: 10px;
+           padding: 10px;
+           color: white;
+           border-radius: 2px;
+           box-shadow: 0px 0px 2px white;
+           text-align: left;
+           text-transform: uppercase;
+           font-family: Arial;
+           background-color: #1e1e1e;
+           grid-column-start: 1;
+           grid-column-end: 7;
+       }
+
+       .changelog-header {
+           border: solid white 1px;
+           margin: 10px;
+           padding: 10px;
+           color: white;
+           border-radius: 2px;
+           box-shadow: 0px 0px 2px white;
+           text-align: left;
+           text-transform: uppercase;
+           grid-column-start: 1;
+           grid-column-end: 7;
+           font-family: Arial;
+           background-color: #1e1e1e;
+       }
+
+       .changelog-p {
+           border: solid white 1px;
+           margin: 10px;
+           padding: 10px;
+           color: white;
+           border-radius: 2px;
+           box-shadow: 0px 0px 2px white;
+           text-align: left;
+           text-transform: uppercase;
+           grid-column-start: 1;
+           grid-column-end: 7;
+           font-family: Arial;
+           background-color: #1e1e1e;
+       }
+
+       .star-data {
+           border: solid yellow 1px;
+           color: yellow;
+           font-size: 12px;
+           text-align: center;
+           background-color: #1e1e1e;
+           font-family: Arial;
+           font-weight: bold;
+           text-transform: uppercase;
+           line-height: 30px;
+           width: 15%;
+           !important;
+           border-radius: 2px;
+           box-shadow: 0px 0px 2px yellow;
+           cursor: pointer;
+       }
+
+       .saveall {
+           border: solid red 1px;
+           margin: 10px;
+           padding: 10px;
+           color: red;
+           border-radius: 2px;
+           box-shadow: 0px 0px 2px red;
+           text-align: center;
+           text-transform: uppercase;
+           grid-column-start: 6;
+           grid-column-end: 7;
+           font-family: Arial;
+           background-color: #1e1e1e;
+       }
+       .text-area {
+           border: solid white 1px;
+           margin: 10px;
+           padding: 10px;
+           color: white;
+           border-radius: 2px;
+           box-shadow: 0px 0px 2px white;
+           text-align: left;
+           text-transform: uppercase;
+           grid-column-start: 1;
+           grid-column-end: 7;
+           font-family: Arial;
+           background-color: #1e1e1e;
+           height: 50px;
+       }
+
+       .avatar {
+           max-height: 200px;
+           max-width: 200px;
+           min-height: 200px;
+           min-width: 200px;
+           display: block;
+           grid-column-start: 1;
+           grid-column-end: 7;
+           margin-right: auto;
+           margin-left: auto;
+           border: solid white 1px;
+           border-radius: 2px;
+           box-shadow: 0px 0px 2px white;
+           padding: 10px;
+           background-color: #1e1e1e;
+       }
+
+       .profilelink {
+           border: solid white 1px;
+           color: white;
+           border-radius: 2px;
+           box-shadow: 0px 0px 2px white;
+           text-transform: uppercase;
+           padding: 10px;
+           font-family: Arial;
+           background-color: #1e1e1e;
+           margin-right: auto;
+           margin-left: auto;
+           text-align: center;
+           width: 50%;
+       }
+       .profilesave {
+           border: solid white 1px;
+           color: white;
+           border-radius: 2px;
+           box-shadow: 0px 0px 2px white;
+           text-transform: uppercase;
+           padding: 10px;
+           font-family: Arial;
+           background-color: #1e1e1e;
+           margin-right: auto;
+           margin-left: auto;
+           text-align: center;
+           width: 36%;
+       }
+
+       .ttt {
+           grid-column-start: 1;
+           grid-column-end: 7;
+           display: block;
+           margin-left: auto;
+           margin-right: auto; 
+           max-width: 200px;
+           min-width: 200px;
+       }
+
+
+
+    </style>
+
+</head>
+<body onload="clock()">
+    <div class="wrapper">
+        <div class="header">
+            <img class="logo" src="LogoMakr_7VKKMw.png" onclick="back()">
+            <button onclick="profilepage()" class="user"><i class="fa fa-user"></i></button>
+            <button onclick="back()" class="user"><i class="fa fa-table"></i></button>
+            <button onClick="document.location.reload(true)" class="user"><i class="fa fa-refresh"></i></button>
+        </div>
+        <div class="content" id="content">
+            <div>
+                <button onclick="changelog()" class="button-edit-top"><i class="fa fa-history"></i> changelog</button>
+            </div>
+            <input id="cell-top1" class="cell-top" type="text" value="dato" disabled>
+            <input id="cell-top2" class="cell-top" type="text" value="nøkkelvaner" disabled>
+            <input id="cell-top3" class="cell-top" type="text" value="oppsumering" disabled>
+            <input id="cell-top4" class="cell-top" type="text" value="oppgaver" disabled>
+            <input id="cell-top5" class="cell-top" type="text" value="andre" disabled>
+            <div>
+                <button onclick="commentpage()" class="button-comments"><i class="fa fa-comments"></i></button>
+                <button class="button-rating">
+                    <span class="star" id="id-star1" onclick="star1()"><i class="fa fa-star"></i></span>
+                    <span class="star" id="id-star2" onclick="star2()"><i class="fa fa-star"></i></span>
+                    <span class="star" id="id-star3" onclick="star3()"><i class="fa fa-star"></i></span>
+                    <span class="star" id="id-star4" onclick="star4()"><i class="fa fa-star"></i></span>
+                    <span class="star" id="id-star5" onclick="star5()"><i class="fa fa-star"></i></span>
+                </button>
+                <button class="star-data" id="star-data1">0</button>
+            </div>
+            <input class="cell-dato" id="dato1" type="text" value="dato" disabled>
+            <input type="text" class="cell" type="text" value="" disabled</input>
+            <input type="text" class="cell" type="text" value="" disabled</input>
+            <input type="text" class="cell" type="text" value="" disabled</input>
+            <input type="text" class="cell" type="text" value="" disabled</input>
+            <div>
+                <button onclick="commentpage()" class="button-comments"><i class="fa fa-comments"></i></button>
+                <button class="button-rating">
+                    <span class="star" id="id-star6" onclick="star6()"><i class="fa fa-star"></i></span>
+                    <span class="star" id="id-star7" onclick="star7()"><i class="fa fa-star"></i></span>
+                    <span class="star" id="id-star8" onclick="star8()"><i class="fa fa-star"></i></span>
+                    <span class="star" id="id-star9" onclick="star9()"><i class="fa fa-star"></i></span>
+                    <span class="star" id="id-star10" onclick="star10()"><i class="fa fa-star"></i></span>
+                </button>
+                <button class="star-data" id="star-data2">0</button>
+            </div>
+            <input class="cell-dato" id="dato2" type="text" value="dato" disabled>
+            <input type="text" class="cell" type="text" value="" disabled</input>
+            <input type="text" class="cell" type="text" value="" disabled</input>
+            <input type="text" class="cell" type="text" value="" disabled</input>
+            <input type="text" class="cell" type="text" value="" disabled</input>
+            <div>
+                <button onclick="commentpage()" class="button-comments"><i class="fa fa-comments"></i></button>
+                <button class="button-rating">
+                    <span class="star" id="id-star11" onclick="star11()"><i class="fa fa-star"></i></span>
+                    <span class="star" id="id-star12" onclick="star12()"><i class="fa fa-star"></i></span>
+                    <span class="star" id="id-star13" onclick="star13()"><i class="fa fa-star"></i></span>
+                    <span class="star" id="id-star14" onclick="star14()"><i class="fa fa-star"></i></span>
+                    <span class="star" id="id-star15" onclick="star15()"><i class="fa fa-star"></i></span>
+                </button>
+                <button class="star-data" id="star-data3">0</button>
+            </div>
+            <input class="cell-dato" id="dato3" type="text" value="dato" disabled>
+            <input type="text" class="cell" type="text" value="" disabled</input>
+            <input type="text" class="cell" type="text" value="" disabled</input>
+            <input type="text" class="cell" type="text" value="" disabled</input>
+            <input type="text" class="cell" type="text" value="" disabled</input>
+            <div>
+                <button onclick="commentpage()" class="button-comments"><i class="fa fa-comments"></i></button>
+                <button class="button-rating">
+                    <span class="star" id="id-star16" onclick="star16()"><i class="fa fa-star"></i></span>
+                    <span class="star" id="id-star17" onclick="star17()"><i class="fa fa-star"></i></span>
+                    <span class="star" id="id-star18" onclick="star18()"><i class="fa fa-star"></i></span>
+                    <span class="star" id="id-star19" onclick="star19()"><i class="fa fa-star"></i></span>
+                    <span class="star" id="id-star20" onclick="star20()"><i class="fa fa-star"></i></span>
+                </button>
+                <button class="star-data" id="star-data4">0</button>
+            </div>
+            <input class="cell-dato" id="dato4" type="text" value="dato" disabled>
+            <input type="text" class="cell" type="text" value="" disabled</input>
+            <input type="text" class="cell" type="text" value="" disabled</input>
+            <input type="text" class="cell" type="text" value="" disabled</input>
+            <input type="text" class="cell" type="text" value="" disabled</input>
+            <div>
+                <button onclick="commentpage()" class="button-comments"><i class="fa fa-comments"></i></button>
+                <button class="button-rating">
+                    <span class="star" id="id-star21" onclick="star21()"><i class="fa fa-star"></i></span>
+                    <span class="star" id="id-star22" onclick="star22()"><i class="fa fa-star"></i></span>
+                    <span class="star" id="id-star23" onclick="star23()"><i class="fa fa-star"></i></span>
+                    <span class="star" id="id-star24" onclick="star24()"><i class="fa fa-star"></i></span>
+                    <span class="star" id="id-star25" onclick="star25()"><i class="fa fa-star"></i></span>
+                </button>
+                <button class="star-data" id="star-data5">0</button>
+            </div>
+            <input class="cell-dato" id="dato5" type="text" value="dato" disabled>
+            <input type="text" class="cell" type="text" value="" disabled</input>
+            <input type="text" class="cell" type="text" value="" disabled</input>
+            <input type="text" class="cell" type="text" value="" disabled</input>
+            <input type="text" class="cell" type="text" value="" disabled</input>
+            <div>
+                <button onclick="commentpage()" class="button-comments"><i class="fa fa-comments"></i></button>
+                <button class="button-rating">
+                    <span class="star" id="id-star26" onclick="star26()"><i class="fa fa-star"></i></span>
+                    <span class="star" id="id-star27" onclick="star27()"><i class="fa fa-star"></i></span>
+                    <span class="star" id="id-star28" onclick="star28()"><i class="fa fa-star"></i></span>
+                    <span class="star" id="id-star29" onclick="star29()"><i class="fa fa-star"></i></span>
+                    <span class="star" id="id-star30" onclick="star30()"><i class="fa fa-star"></i></span>
+                </button>
+                <button class="star-data" id="star-data6">0</button>
+            </div>
+            <input class="cell-dato" id="dato6" type="text" value="dato" disabled>
+            <input type="text" class="cell" type="text" value="" disabled</input>
+            <input type="text" class="cell" type="text" value="" disabled</input>
+            <input type="text" class="cell" type="text" value="" disabled</input>
+            <input type="text" class="cell" type="text" value="" disabled</input>
+            <div>
+                <button onclick="commentpage()" class="button-comments"><i class="fa fa-comments"></i></button>
+                <button class="button-rating">
+                    <span class="star" id="id-star31" onclick="star31()"><i class="fa fa-star"></i></span>
+                    <span class="star" id="id-star32" onclick="star32()"><i class="fa fa-star"></i></span>
+                    <span class="star" id="id-star33" onclick="star33()"><i class="fa fa-star"></i></span>
+                    <span class="star" id="id-star34" onclick="star34()"><i class="fa fa-star"></i></span>
+                    <span class="star" id="id-star35" onclick="star35()"><i class="fa fa-star"></i></span>
+                </button>
+                <button class="star-data" id="star-data7">0</button>
+            </div>
+            <input class="cell-dato" id="dato7" type="text" value="dato" disabled>
+            <input type="text" class="cell" type="text" value="" disabled</input>
+            <input type="text" class="cell" type="text" value="" disabled</input>
+            <input type="text" class="cell" type="text" value="" disabled</input>
+            <input type="text" class="cell" type="text" value="" disabled</input>
+        </div>
+        <div class="footer">
+            <p class="dev">developed with <i class="fa fa-heart"></i> by getacademy</p>
+        </div>
+    </div>
+
+    <script>
+        function clock() {
+            var day = 86400000;
+            var today = new Date(Date.now()).toLocaleDateString();
+            document.getElementById('dato1').value = today;
+
+            var tomorrow = new Date(Date.now() + day).toLocaleDateString();
+            document.getElementById('dato2').value = tomorrow;
+
+            var nextDay = new Date(Date.now() + (day * 2)).toLocaleDateString();
+            document.getElementById('dato3').value = nextDay;
+
+            var nextDay = new Date(Date.now() + (day * 3)).toLocaleDateString();
+            document.getElementById('dato4').value = nextDay;
+
+            var nextDay = new Date(Date.now() + (day * 4)).toLocaleDateString();
+            document.getElementById('dato5').value = nextDay;
+
+            var nextDay = new Date(Date.now() + (day * 5)).toLocaleDateString();
+            document.getElementById('dato6').value = nextDay;
+
+            var nextDay = new Date(Date.now() + (day * 6)).toLocaleDateString();
+            document.getElementById('dato7').value = nextDay;
+
+
+        }
+
+        function star1() {
+            document.getElementById('id-star1').style.cssText = 'color: yellow;';
+            document.getElementById('id-star2').style.cssText = 'color: white;';
+            document.getElementById('id-star3').style.cssText = 'color: white;';
+            document.getElementById('id-star4').style.cssText = 'color: white;';
+            document.getElementById('id-star5').style.cssText = 'color: white;';
+            document.getElementById('star-data1').innerHTML = '1';
+        }
+        function star2() {
+            document.getElementById('id-star1').style.cssText = 'color: yellow;';
+            document.getElementById('id-star2').style.cssText = 'color: yellow;';
+            document.getElementById('id-star3').style.cssText = 'color: white;';
+            document.getElementById('id-star4').style.cssText = 'color: white;';
+            document.getElementById('id-star5').style.cssText = 'color: white;';
+            document.getElementById('star-data1').innerHTML = '2';
+        }
+        function star3() {
+            document.getElementById('id-star1').style.cssText = 'color: yellow;';
+            document.getElementById('id-star2').style.cssText = 'color: yellow;';
+            document.getElementById('id-star3').style.cssText = 'color: yellow;';
+            document.getElementById('id-star4').style.cssText = 'color: white;';
+            document.getElementById('id-star5').style.cssText = 'color: white;';
+            document.getElementById('star-data1').innerHTML = '3';
+        }
+        function star4() {
+            document.getElementById('id-star1').style.cssText = 'color: yellow;';
+            document.getElementById('id-star2').style.cssText = 'color: yellow;';
+            document.getElementById('id-star3').style.cssText = 'color: yellow;';
+            document.getElementById('id-star4').style.cssText = 'color: yellow;';
+            document.getElementById('id-star5').style.cssText = 'color: white;';
+            document.getElementById('star-data1').innerHTML = '4';
+        }
+        function star5() {
+            document.getElementById('id-star1').style.cssText = 'color: yellow;';
+            document.getElementById('id-star2').style.cssText = 'color: yellow;';
+            document.getElementById('id-star3').style.cssText = 'color: yellow;';
+            document.getElementById('id-star4').style.cssText = 'color: yellow;';
+            document.getElementById('id-star5').style.cssText = 'color: yellow;';
+            document.getElementById('star-data1').innerHTML = '5';
+        }
+
+        function star6() {
+            document.getElementById('id-star6').style.cssText = 'color: yellow;';
+            document.getElementById('id-star7').style.cssText = 'color: white;';
+            document.getElementById('id-star8').style.cssText = 'color: white;';
+            document.getElementById('id-star9').style.cssText = 'color: white;';
+            document.getElementById('id-star10').style.cssText = 'color: white;';
+            document.getElementById('star-data2').innerHTML = '1';
+        }
+        function star7() {
+            document.getElementById('id-star6').style.cssText = 'color: yellow;';
+            document.getElementById('id-star7').style.cssText = 'color: yellow;';
+            document.getElementById('id-star8').style.cssText = 'color: white;';
+            document.getElementById('id-star9').style.cssText = 'color: white;';
+            document.getElementById('id-star10').style.cssText = 'color: white;';
+            document.getElementById('star-data2').innerHTML = '2';
+        }
+        function star8() {
+            document.getElementById('id-star6').style.cssText = 'color: yellow;';
+            document.getElementById('id-star7').style.cssText = 'color: yellow;';
+            document.getElementById('id-star8').style.cssText = 'color: yellow;';
+            document.getElementById('id-star9').style.cssText = 'color: white;';
+            document.getElementById('id-star10').style.cssText = 'color: white;';
+            document.getElementById('star-data2').innerHTML = '3';
+        }
+        function star9() {
+            document.getElementById('id-star6').style.cssText = 'color: yellow;';
+            document.getElementById('id-star7').style.cssText = 'color: yellow;';
+            document.getElementById('id-star8').style.cssText = 'color: yellow;';
+            document.getElementById('id-star9').style.cssText = 'color: yellow;';
+            document.getElementById('id-star10').style.cssText = 'color: white;';
+            document.getElementById('star-data2').innerHTML = '4';
+        }
+        function star10() {
+            document.getElementById('id-star6').style.cssText = 'color: yellow;';
+            document.getElementById('id-star7').style.cssText = 'color: yellow;';
+            document.getElementById('id-star8').style.cssText = 'color: yellow;';
+            document.getElementById('id-star9').style.cssText = 'color: yellow;';
+            document.getElementById('id-star10').style.cssText = 'color: yellow;';
+            document.getElementById('star-data2').innerHTML = '5';
+        }
+
+        function star11() {
+            document.getElementById('id-star11').style.cssText = 'color: yellow;';
+            document.getElementById('id-star12').style.cssText = 'color: white;';
+            document.getElementById('id-star13').style.cssText = 'color: white;';
+            document.getElementById('id-star14').style.cssText = 'color: white;';
+            document.getElementById('id-star15').style.cssText = 'color: white;';
+            document.getElementById('star-data3').innerHTML = '1';
+        }
+        function star12() {
+            document.getElementById('id-star11').style.cssText = 'color: yellow;';
+            document.getElementById('id-star12').style.cssText = 'color: yellow;';
+            document.getElementById('id-star13').style.cssText = 'color: white;';
+            document.getElementById('id-star14').style.cssText = 'color: white;';
+            document.getElementById('id-star15').style.cssText = 'color: white;';
+            document.getElementById('star-data3').innerHTML = '2';
+        }
+        function star13() {
+            document.getElementById('id-star11').style.cssText = 'color: yellow;';
+            document.getElementById('id-star12').style.cssText = 'color: yellow;';
+            document.getElementById('id-star13').style.cssText = 'color: yellow;';
+            document.getElementById('id-star14').style.cssText = 'color: white;';
+            document.getElementById('id-star15').style.cssText = 'color: white;';
+            document.getElementById('star-data3').innerHTML = '3';
+        }
+        function star14() {
+            document.getElementById('id-star11').style.cssText = 'color: yellow;';
+            document.getElementById('id-star12').style.cssText = 'color: yellow;';
+            document.getElementById('id-star13').style.cssText = 'color: yellow;';
+            document.getElementById('id-star14').style.cssText = 'color: yellow;';
+            document.getElementById('id-star15').style.cssText = 'color: white;';
+            document.getElementById('star-data3').innerHTML = '4';
+        }
+        function star15() {
+            document.getElementById('id-star11').style.cssText = 'color: yellow;';
+            document.getElementById('id-star12').style.cssText = 'color: yellow;';
+            document.getElementById('id-star13').style.cssText = 'color: yellow;';
+            document.getElementById('id-star14').style.cssText = 'color: yellow;';
+            document.getElementById('id-star15').style.cssText = 'color: yellow;';
+            document.getElementById('star-data3').innerHTML = '5';
+        }
+
+        function star16() {
+            document.getElementById('id-star16').style.cssText = 'color: yellow;';
+            document.getElementById('id-star17').style.cssText = 'color: white;';
+            document.getElementById('id-star18').style.cssText = 'color: white;';
+            document.getElementById('id-star19').style.cssText = 'color: white;';
+            document.getElementById('id-star20').style.cssText = 'color: white;';
+            document.getElementById('star-data4').innerHTML = '1';
+        }
+        function star17() {
+            document.getElementById('id-star16').style.cssText = 'color: yellow;';
+            document.getElementById('id-star17').style.cssText = 'color: yellow;';
+            document.getElementById('id-star18').style.cssText = 'color: white;';
+            document.getElementById('id-star19').style.cssText = 'color: white;';
+            document.getElementById('id-star20').style.cssText = 'color: white;';
+            document.getElementById('star-data4').innerHTML = '2';
+        }
+        function star18() {
+            document.getElementById('id-star16').style.cssText = 'color: yellow;';
+            document.getElementById('id-star17').style.cssText = 'color: yellow;';
+            document.getElementById('id-star18').style.cssText = 'color: yellow;';
+            document.getElementById('id-star19').style.cssText = 'color: white;';
+            document.getElementById('id-star20').style.cssText = 'color: white;';
+            document.getElementById('star-data4').innerHTML = '3';
+        }
+        function star19() {
+            document.getElementById('id-star16').style.cssText = 'color: yellow;';
+            document.getElementById('id-star17').style.cssText = 'color: yellow;';
+            document.getElementById('id-star18').style.cssText = 'color: yellow;';
+            document.getElementById('id-star19').style.cssText = 'color: yellow;';
+            document.getElementById('id-star20').style.cssText = 'color: white;';
+            document.getElementById('star-data4').innerHTML = '4';
+        }
+        function star20() {
+            document.getElementById('id-star16').style.cssText = 'color: yellow;';
+            document.getElementById('id-star17').style.cssText = 'color: yellow;';
+            document.getElementById('id-star18').style.cssText = 'color: yellow;';
+            document.getElementById('id-star19').style.cssText = 'color: yellow;';
+            document.getElementById('id-star20').style.cssText = 'color: yellow;';
+            document.getElementById('star-data4').innerHTML = '5';
+        }
+
+        function star21() {
+            document.getElementById('id-star21').style.cssText = 'color: yellow;';
+            document.getElementById('id-star22').style.cssText = 'color: white;';
+            document.getElementById('id-star23').style.cssText = 'color: white;';
+            document.getElementById('id-star24').style.cssText = 'color: white;';
+            document.getElementById('id-star25').style.cssText = 'color: white;';
+            document.getElementById('star-data5').innerHTML = '1';
+        }
+        function star22() {
+            document.getElementById('id-star21').style.cssText = 'color: yellow;';
+            document.getElementById('id-star22').style.cssText = 'color: yellow;';
+            document.getElementById('id-star23').style.cssText = 'color: white;';
+            document.getElementById('id-star24').style.cssText = 'color: white;';
+            document.getElementById('id-star25').style.cssText = 'color: white;';
+            document.getElementById('star-data5').innerHTML = '2';
+        }
+        function star23() {
+            document.getElementById('id-star21').style.cssText = 'color: yellow;';
+            document.getElementById('id-star22').style.cssText = 'color: yellow;';
+            document.getElementById('id-star23').style.cssText = 'color: yellow;';
+            document.getElementById('id-star24').style.cssText = 'color: white;';
+            document.getElementById('id-star25').style.cssText = 'color: white;';
+            document.getElementById('star-data5').innerHTML = '3';
+        }
+        function star24() {
+            document.getElementById('id-star21').style.cssText = 'color: yellow;';
+            document.getElementById('id-star22').style.cssText = 'color: yellow;';
+            document.getElementById('id-star23').style.cssText = 'color: yellow;';
+            document.getElementById('id-star24').style.cssText = 'color: yellow;';
+            document.getElementById('id-star25').style.cssText = 'color: white;';
+            document.getElementById('star-data5').innerHTML = '4';
+        }
+        function star25() {
+            document.getElementById('id-star21').style.cssText = 'color: yellow;';
+            document.getElementById('id-star22').style.cssText = 'color: yellow;';
+            document.getElementById('id-star23').style.cssText = 'color: yellow;';
+            document.getElementById('id-star24').style.cssText = 'color: yellow;';
+            document.getElementById('id-star25').style.cssText = 'color: yellow;';
+            document.getElementById('star-data5').innerHTML = '5';
+        }
+
+        function star26() {
+            document.getElementById('id-star26').style.cssText = 'color: yellow;';
+            document.getElementById('id-star27').style.cssText = 'color: white;';
+            document.getElementById('id-star28').style.cssText = 'color: white;';
+            document.getElementById('id-star29').style.cssText = 'color: white;';
+            document.getElementById('id-star30').style.cssText = 'color: white;';
+            document.getElementById('star-data6').innerHTML = '1';
+        }
+        function star27() {
+            document.getElementById('id-star26').style.cssText = 'color: yellow;';
+            document.getElementById('id-star27').style.cssText = 'color: yellow;';
+            document.getElementById('id-star28').style.cssText = 'color: white;';
+            document.getElementById('id-star29').style.cssText = 'color: white;';
+            document.getElementById('id-star30').style.cssText = 'color: white;';
+            document.getElementById('star-data6').innerHTML = '2';
+        }
+        function star28() {
+            document.getElementById('id-star26').style.cssText = 'color: yellow;';
+            document.getElementById('id-star27').style.cssText = 'color: yellow;';
+            document.getElementById('id-star28').style.cssText = 'color: yellow;';
+            document.getElementById('id-star29').style.cssText = 'color: white;';
+            document.getElementById('id-star30').style.cssText = 'color: white;';
+            document.getElementById('star-data6').innerHTML = '3';
+        }
+        function star29() {
+            document.getElementById('id-star26').style.cssText = 'color: yellow;';
+            document.getElementById('id-star27').style.cssText = 'color: yellow;';
+            document.getElementById('id-star28').style.cssText = 'color: yellow;';
+            document.getElementById('id-star29').style.cssText = 'color: yellow;';
+            document.getElementById('id-star30').style.cssText = 'color: white;';
+            document.getElementById('star-data6').innerHTML = '4';
+        }
+        function star30() {
+            document.getElementById('id-star26').style.cssText = 'color: yellow;';
+            document.getElementById('id-star27').style.cssText = 'color: yellow;';
+            document.getElementById('id-star28').style.cssText = 'color: yellow;';
+            document.getElementById('id-star29').style.cssText = 'color: yellow;';
+            document.getElementById('id-star30').style.cssText = 'color: yellow;';
+            document.getElementById('star-data6').innerHTML = '5';
+        }
+
+
+
+
+        function star31() {
+            document.getElementById('id-star31').style.cssText = 'color: yellow;';
+            document.getElementById('id-star32').style.cssText = 'color: white;';
+            document.getElementById('id-star33').style.cssText = 'color: white;';
+            document.getElementById('id-star34').style.cssText = 'color: white;';
+            document.getElementById('id-star35').style.cssText = 'color: white;';
+            document.getElementById('star-data7').innerHTML = '1';
+        }
+        function star32() {
+            document.getElementById('id-star31').style.cssText = 'color: yellow;';
+            document.getElementById('id-star32').style.cssText = 'color: yellow;';
+            document.getElementById('id-star33').style.cssText = 'color: white;';
+            document.getElementById('id-star34').style.cssText = 'color: white;';
+            document.getElementById('id-star35').style.cssText = 'color: white;';
+            document.getElementById('star-data7').innerHTML = '2';
+        }
+        function star33() {
+            document.getElementById('id-star31').style.cssText = 'color: yellow;';
+            document.getElementById('id-star32').style.cssText = 'color: yellow;';
+            document.getElementById('id-star33').style.cssText = 'color: yellow;';
+            document.getElementById('id-star34').style.cssText = 'color: white;';
+            document.getElementById('id-star35').style.cssText = 'color: white;';
+            document.getElementById('star-data7').innerHTML = '3';
+        }
+        function star34() {
+            document.getElementById('id-star31').style.cssText = 'color: yellow;';
+            document.getElementById('id-star32').style.cssText = 'color: yellow;';
+            document.getElementById('id-star33').style.cssText = 'color: yellow;';
+            document.getElementById('id-star34').style.cssText = 'color: yellow;';
+            document.getElementById('id-star35').style.cssText = 'color: white;';
+            document.getElementById('star-data7').innerHTML = '4';
+        }
+        function star35() {
+            document.getElementById('id-star31').style.cssText = 'color: yellow;';
+            document.getElementById('id-star32').style.cssText = 'color: yellow;';
+            document.getElementById('id-star33').style.cssText = 'color: yellow;';
+            document.getElementById('id-star34').style.cssText = 'color: yellow;';
+            document.getElementById('id-star35').style.cssText = 'color: yellow;';
+            document.getElementById('star-data7').innerHTML = '5';
+        }
+
+        function commentpage() {
+            document.getElementById('content').innerHTML = `
+<input id="InputName" class="InputName" type="text" value="username">
+<input id="InputMessage" class="InputMessage" type="text" value="message">
+<input class="InputSend" type="submit" value="send" onclick="messages()">
+<div class="txthere" id="txthere"></div>
+                    `;
+        }
+
+        function messages() {
+            var user = document.getElementById('InputName').value;
+            var message = document.getElementById('InputMessage').value;
+            document.getElementById('txthere').innerHTML += '<div class="txthere" id="txthere">' + user + ' : ' + message + '</div>';
+        }
+
+        function back() {
+            document.getElementById('content').innerHTML = `
+ <div>
+                <button onclick="changelog()" class="button-edit-top"><i class="fa fa-history"></i> changelog</button>
+            </div>
+            <input id="cell-top1" class="cell-top" type="text" value="dato" disabled>
+            <input id="cell-top2" class="cell-top" type="text" value="nøkkelvaner" disabled>
+            <input id="cell-top3" class="cell-top" type="text" value="oppsumering" disabled>
+            <input id="cell-top4" class="cell-top" type="text" value="oppgaver" disabled>
+            <input id="cell-top5" class="cell-top" type="text" value="andre" disabled>
+            <div>
+                <button onclick="commentpage()" class="button-comments"><i class="fa fa-comments"></i></button>
+                <button class="button-rating">
+                    <span class="star" id="id-star1" onclick="star1()"><i class="fa fa-star"></i></span>
+                    <span class="star" id="id-star2" onclick="star2()"><i class="fa fa-star"></i></span>
+                    <span class="star" id="id-star3" onclick="star3()"><i class="fa fa-star"></i></span>
+                    <span class="star" id="id-star4" onclick="star4()"><i class="fa fa-star"></i></span>
+                    <span class="star" id="id-star5" onclick="star5()"><i class="fa fa-star"></i></span>
+                </button>
+                <button class="star-data" id="star-data1">0</button>
+            </div>
+            <input class="cell-dato" id="dato1" type="text" value="dato" disabled>
+            <input type="text" class="cell" type="text" value="" disabled</input>
+            <input type="text" class="cell" type="text" value="" disabled</input>
+            <input type="text" class="cell" type="text" value="" disabled</input>
+            <input type="text" class="cell" type="text" value="" disabled</input>
+            <div>
+                <button onclick="commentpage()" class="button-comments"><i class="fa fa-comments"></i></button>
+                <button class="button-rating">
+                    <span class="star" id="id-star6" onclick="star6()"><i class="fa fa-star"></i></span>
+                    <span class="star" id="id-star7" onclick="star7()"><i class="fa fa-star"></i></span>
+                    <span class="star" id="id-star8" onclick="star8()"><i class="fa fa-star"></i></span>
+                    <span class="star" id="id-star9" onclick="star9()"><i class="fa fa-star"></i></span>
+                    <span class="star" id="id-star10" onclick="star10()"><i class="fa fa-star"></i></span>
+                </button>
+                <button class="star-data" id="star-data2">0</button>
+            </div>
+            <input class="cell-dato" id="dato2" type="text" value="dato" disabled>
+            <input type="text" class="cell" type="text" value="" disabled</input>
+            <input type="text" class="cell" type="text" value="" disabled</input>
+            <input type="text" class="cell" type="text" value="" disabled</input>
+            <input type="text" class="cell" type="text" value="" disabled</input>
+            <div>
+                <button onclick="commentpage()" class="button-comments"><i class="fa fa-comments"></i></button>
+                <button class="button-rating">
+                    <span class="star" id="id-star11" onclick="star11()"><i class="fa fa-star"></i></span>
+                    <span class="star" id="id-star12" onclick="star12()"><i class="fa fa-star"></i></span>
+                    <span class="star" id="id-star13" onclick="star13()"><i class="fa fa-star"></i></span>
+                    <span class="star" id="id-star14" onclick="star14()"><i class="fa fa-star"></i></span>
+                    <span class="star" id="id-star15" onclick="star15()"><i class="fa fa-star"></i></span>
+                </button>
+                <button class="star-data" id="star-data3">0</button>
+            </div>
+            <input class="cell-dato" id="dato3" type="text" value="dato" disabled>
+            <input type="text" class="cell" type="text" value="" disabled</input>
+            <input type="text" class="cell" type="text" value="" disabled</input>
+            <input type="text" class="cell" type="text" value="" disabled</input>
+            <input type="text" class="cell" type="text" value="" disabled</input>
+            <div>
+                <button onclick="commentpage()" class="button-comments"><i class="fa fa-comments"></i></button>
+                <button class="button-rating">
+                    <span class="star" id="id-star16" onclick="star16()"><i class="fa fa-star"></i></span>
+                    <span class="star" id="id-star17" onclick="star17()"><i class="fa fa-star"></i></span>
+                    <span class="star" id="id-star18" onclick="star18()"><i class="fa fa-star"></i></span>
+                    <span class="star" id="id-star19" onclick="star19()"><i class="fa fa-star"></i></span>
+                    <span class="star" id="id-star20" onclick="star20()"><i class="fa fa-star"></i></span>
+                </button>
+                <button class="star-data" id="star-data4">0</button>
+            </div>
+            <input class="cell-dato" id="dato4" type="text" value="dato" disabled>
+            <input type="text" class="cell" type="text" value="" disabled</input>
+            <input type="text" class="cell" type="text" value="" disabled</input>
+            <input type="text" class="cell" type="text" value="" disabled</input>
+            <input type="text" class="cell" type="text" value="" disabled</input>
+            <div>
+                <button onclick="commentpage()" class="button-comments"><i class="fa fa-comments"></i></button>
+                <button class="button-rating">
+                    <span class="star" id="id-star21" onclick="star21()"><i class="fa fa-star"></i></span>
+                    <span class="star" id="id-star22" onclick="star22()"><i class="fa fa-star"></i></span>
+                    <span class="star" id="id-star23" onclick="star23()"><i class="fa fa-star"></i></span>
+                    <span class="star" id="id-star24" onclick="star24()"><i class="fa fa-star"></i></span>
+                    <span class="star" id="id-star25" onclick="star25()"><i class="fa fa-star"></i></span>
+                </button>
+                <button class="star-data" id="star-data5">0</button>
+            </div>
+            <input class="cell-dato" id="dato5" type="text" value="dato" disabled>
+            <input type="text" class="cell" type="text" value="" disabled</input>
+            <input type="text" class="cell" type="text" value="" disabled</input>
+            <input type="text" class="cell" type="text" value="" disabled</input>
+            <input type="text" class="cell" type="text" value="" disabled</input>
+            <div>
+                <button onclick="commentpage()" class="button-comments"><i class="fa fa-comments"></i></button>
+                <button class="button-rating">
+                    <span class="star" id="id-star26" onclick="star26()"><i class="fa fa-star"></i></span>
+                    <span class="star" id="id-star27" onclick="star27()"><i class="fa fa-star"></i></span>
+                    <span class="star" id="id-star28" onclick="star28()"><i class="fa fa-star"></i></span>
+                    <span class="star" id="id-star29" onclick="star29()"><i class="fa fa-star"></i></span>
+                    <span class="star" id="id-star30" onclick="star30()"><i class="fa fa-star"></i></span>
+                </button>
+                <button class="star-data" id="star-data6">0</button>
+            </div>
+            <input class="cell-dato" id="dato6" type="text" value="dato" disabled>
+            <input type="text" class="cell" type="text" value="" disabled</input>
+            <input type="text" class="cell" type="text" value="" disabled</input>
+            <input type="text" class="cell" type="text" value="" disabled</input>
+            <input type="text" class="cell" type="text" value="" disabled</input>
+            <div>
+                <button onclick="commentpage()" class="button-comments"><i class="fa fa-comments"></i></button>
+                <button class="button-rating">
+                    <span class="star" id="id-star31" onclick="star31()"><i class="fa fa-star"></i></span>
+                    <span class="star" id="id-star32" onclick="star32()"><i class="fa fa-star"></i></span>
+                    <span class="star" id="id-star33" onclick="star33()"><i class="fa fa-star"></i></span>
+                    <span class="star" id="id-star34" onclick="star34()"><i class="fa fa-star"></i></span>
+                    <span class="star" id="id-star35" onclick="star35()"><i class="fa fa-star"></i></span>
+                </button>
+                <button class="star-data" id="star-data7">0</button>
+            </div>
+            <input class="cell-dato" id="dato7" type="text" value="dato" disabled>
+            <input type="text" class="cell" type="text" value="" disabled</input>
+            <input type="text" class="cell" type="text" value="" disabled</input>
+            <input type="text" class="cell" type="text" value="" disabled</input>
+            <input type="text" class="cell" type="text" value="" disabled</input>
+        </div>
+                    `;
+        }
+
+
+
+        function changelog() {
+            document.getElementById('content').innerHTML = `
+<div class="changelog-header">changelog - 1.0.0</div>
+<div class="changelog-p">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. 
+Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, 
+imperdiet a, venenatis vitae, 
+justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, 
+eleifend ac, enim. Aliquam lorem ante, d
+apibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.
+Nam eget dui. Etiam rhoncus. Maecenas tempus, 
+tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante 
+tincidunt tempus. Donec vitae sapien ut libero venenatis 
+faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, 
+leo eget bibendum sodales, augue velit cursus nunc,</div>
+                    `;
+        }
+
+
+        function profilepage() {
+            document.getElementById('content').innerHTML = `
+<img id="changeavatar" class="avatar" src="https://www.w3schools.com/howto/img_avatar.png">
+<div class="ttt">
+<input id="imagevalue" type="text" class="profilelink" type="text" value="IMAGE LINK"</input>
+<button onclick="changeimage()" class="profilesave"><i class="fa fa-save"></i> SAVE</button>
+</div>
+                    `;
+        }
+
+        function changeimage() {
+            var avatar = document.getElementById('imagevalue').value;
+            document.getElementById('changeavatar').setAttribute('src', avatar);
+        }
+    </script>
+</body>
+</html>
